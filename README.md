@@ -25,3 +25,7 @@
 理解:后面这两个原则，暂时不做解释，虽有点的理解
 
 合成复用原则:
+理解:这个原则是说用组合的方式而不是继承的方式复用，但是我觉得要是具体场景，原则性不是很强
+
+相关说明url:
+https://www.runoob.com/design-pattern/strategy-pattern.html
