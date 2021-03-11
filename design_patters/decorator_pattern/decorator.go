@@ -1,5 +1,7 @@
 package decorator_pattern
 
+import "fmt"
+
 /*
 装饰器模式:
 
@@ -12,28 +14,45 @@ type DecoratorHandler interface {
 	Show()
 }
 
+type ComponenentAct interface {
+	Add(entry DecoratorEntry)
+	Remove(entry DecoratorEntry)
+}
+
 //这里我仿造了HTTP路由HandleFunc 的注入方式定义结构体
 type DecoratorEntry struct {
 	handle DecoratorHandler
 	Name   string
 }
 
+func (d *DecoratorEntry) Show() {
+	fmt.Println(d.Name, "entry show")
+}
+
+var DecoratorEntryHandler DecoratorComponent
+
 //我要约束它有Show 的方法，有Add , Remove 方法
 type DecoratorComponent struct {
-	md    []DecoratorEntry
-	entry DecoratorEntry
+	Name  string
+	md    []*DecoratorEntry
+	Entry *DecoratorEntry
+	act   ComponenentAct
 }
 
 func (d *DecoratorComponent) Show() {
+	fmt.Println(d.Name, "decorator show")
 	for _, entry := range d.md {
-		entry.handle.Show()
+		entry.Show()
 	}
 }
 
-func (d *DecoratorComponent) Add(entry DecoratorEntry) {
-
+func (d *DecoratorComponent) Add(name string, entry DecoratorHandler) {
+	d.md = append(d.md, &DecoratorEntry{
+		Name:   name,
+		handle: entry,
+	})
 }
 
-func (d *DecoratorComponent) Remove(entry DecoratorEntry) {
+func (d *DecoratorComponent) Remove(entry *DecoratorHandler) {
 
 }
