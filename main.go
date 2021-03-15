@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/xiet16/go_design_patterns/design_patterns/adapter_pattern"
+	"github.com/xiet16/go_design_patterns/design_patterns/observer_pattern"
 )
 
 func main() {
@@ -11,5 +11,6 @@ func main() {
 	// strategy_pattern.StrategyTest()
 	// decorator_pattern.DecoratorTest()
 	//proxy_pattern.ProxyTest()
-	adapter_pattern.AdapterTest()
+	//adapter_pattern.AdapterTest()
+	observer_pattern.ObserverTest()
 }
